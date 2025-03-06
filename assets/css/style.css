@@ -123,10 +123,11 @@ p,.p-font-size{
 /* imp! Section-2 (Hero-Section) */
 
 .hero-section{
-    background-image: url(../img/Hero-Section/bg-head-imad.png  );
+    background-image: url(../img/Hero-Section/Man-image.webp  );
     background-color: var(--dark-black);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     background-position-x: -5rem;
     z-index: 1;
 }
@@ -379,6 +380,10 @@ input,textarea,.submit-btn{
     .nav-link:hover::before, .nav-line.active::before{
         visibility: hidden;
     }
+    /* imp! Section-1 (Hero Section) */
+    .hero-section{
+        background-position:center;
+    }
 }
 
 /*imp! Mobile Screen */
@@ -402,7 +407,7 @@ input,textarea,.submit-btn{
 
     /* imp! Section-1 (Hero Section) */
     .hero-section{
-        background-position-x: -10rem;
+        background-position:center;
     }
 
     /* imp! Section-5 (Achievements Section) */
@@ -433,5 +438,13 @@ input,textarea,.submit-btn{
         width: 4rem;
         height: 4rem;
         font-size: 1.4rem;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1366px) {
+    .hero-section {
+        background-size: cover; 
+        background-position: center; 
     }
 }
