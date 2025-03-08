@@ -30,21 +30,39 @@ window.onscroll = () => {
 };
 
 //imp! Email JS Script
+document.getElementById('contact-form').addEventListener('submit', (e) => {
+        e.preventDefault();
 
-document.getElementById('contact-form').addEventListener('submit',(e)=>{
-    e.preventDefault()
-    let params = {
-        from_name: document.getElementById('full_name').value,
-        email_id: document.getElementById('email_id').value,
-        message: document.getElementById('message').value
-    }
-    emailjs.send("service_59chgtn","template_8z6zpql",params).then(()=>{
-        document.querySelector('.thank-you-msg').style.display = "block";
-        document.getElementById('full_name').value = ""
-        document.getElementById('email_id').value = ""
-        document.getElementById('message').value = ""
-        setTimeout(()=>{
-            document.querySelector('.thank-you-msg').style.display = "none";
-        },2500)
-    })
-})
+        const fullName = document.getElementById('full_name').value;
+        const emailId = document.getElementById('email_id').value;
+        const message = document.getElementById('message').value;
+
+        if (!fullName || !emailId || !message) {
+            alert("Please complete all fields!");
+            return;
+        }
+
+        let params = {
+            from_name: fullName,
+            email_id: emailId,
+            message: message
+        };
+
+        emailjs.send("service_g7uvqhm", "template_buit1nb", params)
+            .then(() => {
+                document.querySelector('.thank-you-msg').style.display = "block";
+                document.getElementById('full_name').value = "";
+                document.getElementById('email_id').value = "";
+                document.getElementById('message').value = "";
+                setTimeout(() => {
+                    document.querySelector('.thank-you-msg').style.display = "none";
+                }, 2500);
+            })
+            .catch((error) => {
+                console.error("Error sending email: ", error);
+                document.querySelector('.error-msg').style.display = "block";
+                setTimeout(() => {
+                    document.querySelector('.error-msg').style.display = "none";
+                }, 3000);
+            });
+});
